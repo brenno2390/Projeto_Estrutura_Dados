@@ -1,0 +1,102 @@
+id;tipo_transacao;data_transacao;valor;descricao_transacao
+1;DEBIT;20250301000000[-3:BRT];-10.0;Compra no débito - Arquibancada
+2;DEBIT;20250301000000[-3:BRT];-15.0;Compra no débito - Arquibancada
+3;DEBIT;20250301000000[-3:BRT];-28.97;Compra no débito - Uber Uber *Trip Help.U
+4;DEBIT;20250302000000[-3:BRT];-10.0;Transferência enviada pelo Pix - Izabella de Paula Braga - •••.911.786-•• - NU PAGAMENTOS - IP (0260) Agência: 1 Conta: 46484189-0
+5;DEBIT;20250303000000[-3:BRT];-21.0;Compra no débito - Meep Pa*Flash Light Ne
+6;DEBIT;20250303000000[-3:BRT];-11.0;Compra no débito - Meep Pa*Flash Light Ne
+7;DEBIT;20250303000000[-3:BRT];-30.0;Compra no débito - Meep Pa*Flash Light Ne
+8;CREDIT;20250305000000[-3:BRT];0.01;Transferência de saldo NuInvest
+9;DEBIT;20250306000000[-3:BRT];-10.97;Compra no débito - Uber Uber *Trip Help.U
+10;DEBIT;20250306000000[-3:BRT];-2.94;Compra no débito - Uber Uber *Trip Help.U
+11;DEBIT;20250306000000[-3:BRT];-12.92;Compra no débito - Uber Uber *Trip Help.U
+12;DEBIT;20250306000000[-3:BRT];-80.0;Aplicação RDB
+13;CREDIT;20250307000000[-3:BRT];48.0;Resgate RDB
+14;DEBIT;20250307000000[-3:BRT];-48.0;Transferência enviada pelo Pix - Daniel César Pereira Martins - •••.366.476-•• - Nubank (0260) Agência: 1 Conta: 43430737-9
+15;DEBIT;20250307000000[-3:BRT];-11.0;Compra no débito - Deliciart
+16;CREDIT;20250307000000[-3:BRT];320.0;Transferência recebida pelo Pix - NAZIRA R LTDA - 52.127.309/0001-40 - BCO DO BRASIL S.A. (0001) Agência: 2591 Conta: 59581-0
+17;DEBIT;20250307000000[-3:BRT];-15.0;Transferência enviada pelo Pix - Deborah Monique Silva Rodrigues - •••.374.856-•• - PICPAY (0380) Agência: 1 Conta: 6725786-0
+18;DEBIT;20250307000000[-3:BRT];-20.0;Compra no débito - Bar Uberbrau
+19;DEBIT;20250308000000[-3:BRT];-20.9;Compra no débito - Uber Uber *Trip Help.U
+20;DEBIT;20250308000000[-3:BRT];-200.0;Aplicação RDB
+21;DEBIT;20250309000000[-3:BRT];-18.98;Compra no débito - Uber Uber *Trip Help.U
+22;DEBIT;20250309000000[-3:BRT];-18.27;Compra no débito - Pao de Acucar-0458
+23;CREDIT;20250310000000[-3:BRT];120.0;Transferência recebida pelo Pix - Nazira Restaurante Ltda - 52.127.309/0001-40 - COOP SICREDI PLANALTO RS/MG Agência: 333 Conta: 55858-8
+24;DEBIT;20250311000000[-3:BRT];-80.0;Aplicação RDB
+25;DEBIT;20250312000000[-3:BRT];-30.0;Compra no débito - Auto Posto 81
+26;CREDIT;20250313000000[-3:BRT];100.0;Resgate RDB
+27;DEBIT;20250313000000[-3:BRT];-100.0;Transferência enviada pelo Pix - NATURAL FARMA - 25.507.815/0001-92 - ITAÚ UNIBANCO S.A. (0341) Agência: 9278 Conta: 99180-8
+28;DEBIT;20250313000000[-3:BRT];-12.24;Pagamento de boleto efetuado - IDEA INSTITUTO DE DESENVOLVIMENTO AVANCADO LTDA
+29;CREDIT;20250314000000[-3:BRT];320.0;Transferência recebida pelo Pix - Nazira Restaurante Ltda - 52.127.309/0001-40 - COOP SICREDI PLANALTO RS/MG Agência: 333 Conta: 55858-8
+30;DEBIT;20250314000000[-3:BRT];-40.0;Compra no débito - Avila Franco Gestao Ad
+31;DEBIT;20250314000000[-3:BRT];-25.0;Compra no débito - Cervejaria
+32;DEBIT;20250314000000[-3:BRT];-100.0;Compra no débito - Cervejaria
+33;CREDIT;20250315000000[-3:BRT];100.0;Transferência recebida pelo Pix - Nazira Restaurante Ltda - 52.127.309/0001-40 - COOP SICREDI PLANALTO RS/MG Agência: 333 Conta: 55858-8
+34;DEBIT;20250315000000[-3:BRT];-120.0;Transferência enviada pelo Pix - Izabella de Paula Braga - •••.911.786-•• - NU PAGAMENTOS - IP (0260) Agência: 1 Conta: 46484189-0
+35;CREDIT;20250316000000[-3:BRT];80.0;Transferência recebida pelo Pix - Nazira Restaurante Ltda - 52.127.309/0001-40 - COOP SICREDI PLANALTO RS/MG Agência: 333 Conta: 55858-8
+36;DEBIT;20250316000000[-3:BRT];-150.0;Aplicação RDB
+37;CREDIT;20250316000000[-3:BRT];100.0;Transferência recebida pelo Pix - Nazira Restaurante Ltda - 52.127.309/0001-40 - COOP SICREDI PLANALTO RS/MG Agência: 333 Conta: 55858-8
+38;DEBIT;20250316000000[-3:BRT];-51.0;Compra no débito - Jeronimo
+39;DEBIT;20250316000000[-3:BRT];-20.68;Compra no débito - Mercaddo
+40;DEBIT;20250316000000[-3:BRT];-80.0;Aplicação RDB
+41;DEBIT;20250318000000[-3:BRT];-29.0;Transferência enviada pelo Pix - Arthur Resende Santos - •••.276.506-•• - Nubank (0260) Agência: 1 Conta: 82267837-8
+42;CREDIT;20250318000000[-3:BRT];7.0;Resgate RDB
+43;DEBIT;20250318000000[-3:BRT];-12.8;Compra no débito - Deliciar'T
+44;CREDIT;20250318000000[-3:BRT];20.0;Transferência recebida pelo Pix - Nazira Restaurante Ltda - 52.127.309/0001-40 - COOP SICREDI PLANALTO RS/MG Agência: 333 Conta: 55858-8
+45;DEBIT;20250318000000[-3:BRT];-13.8;Compra no débito - Felipe Schmidt dos San
+46;CREDIT;20250319000000[-3:BRT];0.26;Transferência de saldo NuInvest
+47;CREDIT;20250319000000[-3:BRT];50.0;Transferência recebida pelo Pix - PATRICIA DE GUADALUPE GARCIA LOPES - •••.532.128-•• - BCO BRADESCO S.A. (0237) Agência: 1706 Conta: 769-2
+48;CREDIT;20250319000000[-3:BRT];85.0;Resgate RDB
+49;DEBIT;20250319000000[-3:BRT];-85.0;Transferência enviada pelo Pix - Daniel César Pereira Martins - •••.366.476-•• - Nubank (0260) Agência: 1 Conta: 43430737-9
+50;DEBIT;20250319000000[-3:BRT];-64.0;Aplicação RDB
+51;CREDIT;20250320000000[-3:BRT];60.0;Resgate RDB
+52;DEBIT;20250320000000[-3:BRT];-35.0;Compra no débito - Pagmoda*Mercado do Jap
+53;CREDIT;20250320000000[-3:BRT];15.0;Resgate RDB
+54;CREDIT;20250320000000[-3:BRT];15.0;Resgate RDB
+55;DEBIT;20250320000000[-3:BRT];-11.9;Compra no débito - Floriano Peixoto
+56;DEBIT;20250320000000[-3:BRT];-30.0;Aplicação RDB
+57;DEBIT;20250320000000[-3:BRT];-8.0;Compra no débito - Fragoso e Ferreira la
+58;CREDIT;20250320000000[-3:BRT];1.0;Resgate RDB
+59;DEBIT;20250320000000[-3:BRT];-3.0;Compra no débito - Fragoso e Ferreira la
+60;CREDIT;20250321000000[-3:BRT];9.0;Resgate RDB
+61;CREDIT;20250321000000[-3:BRT];30.0;Resgate RDB
+62;DEBIT;20250321000000[-3:BRT];-40.0;Compra no débito - Posto Nicomedes
+63;CREDIT;20250321000000[-3:BRT];5.0;Resgate RDB
+64;DEBIT;20250321000000[-3:BRT];-4.0;Compra no débito - Nazirarestaurante
+65;CREDIT;20250321000000[-3:BRT];320.0;Transferência recebida pelo Pix - Nazira Restaurante Ltda - 52.127.309/0001-40 - COOP SICREDI PLANALTO RS/MG Agência: 333 Conta: 55858-8
+66;DEBIT;20250321000000[-3:BRT];-100.0;Aplicação RDB
+67;CREDIT;20250322000000[-3:BRT];150.0;Resgate RDB
+68;DEBIT;20250322000000[-3:BRT];-320.78;Compra no débito - D Ville Supermercados
+69;CREDIT;20250322000000[-3:BRT];202.0;Transferência recebida pelo Pix - CASSIANO BITTAR JORGE - •••.916.966-•• - BANCO INTER (0077) Agência: 1 Conta: 23688136-1
+70;DEBIT;20250322000000[-3:BRT];-6.99;Compra no débito - Loja de Conveniencia D
+71;DEBIT;20250322000000[-3:BRT];-14.95;Compra no débito - Uber Uber *Trip Help.U
+72;DEBIT;20250323000000[-3:BRT];-7.99;Compra no débito - Qualita Mercado
+73;DEBIT;20250323000000[-3:BRT];-16.96;Compra no débito - Village Paradiso 2 By
+74;DEBIT;20250323000000[-3:BRT];-14.9;Compra no débito - Dl *Google Prime Video
+75;DEBIT;20250324000000[-3:BRT];-100.0;Aplicação RDB
+76;CREDIT;20250324000000[-3:BRT];280.0;Resgate RDB
+77;DEBIT;20250324000000[-3:BRT];-350.0;Transferência enviada pelo Pix - Gabryel Alves da Silva Teixeira - •••.171.896-•• - NU PAGAMENTOS - IP (0260) Agência: 1 Conta: 15164226-8
+78;DEBIT;20250325000000[-3:BRT];-5.0;Compra no débito - Nazirarestaurante
+79;CREDIT;20250326000000[-3:BRT];160.0;Transferência recebida pelo Pix - Nazira Restaurante Ltda - 52.127.309/0001-40 - COOP SICREDI PLANALTO RS/MG Agência: 333 Conta: 55858-8
+80;CREDIT;20250326000000[-3:BRT];125.27;Resgate RDB
+81;DEBIT;20250326000000[-3:BRT];-225.0;Compra no débito - Fine Center Shop
+82;CREDIT;20250326000000[-3:BRT];100.0;Transferência recebida pelo Pix - PATRICIA DE GUADALUPE GARCIA LOPES - •••.532.128-•• - BCO BRADESCO S.A. (0237) Agência: 1706 Conta: 769-2
+83;DEBIT;20250326000000[-3:BRT];-96.8;Compra no débito - Olipizzaltda
+84;DEBIT;20250327000000[-3:BRT];-40.0;Compra no débito - Posto Jardim Altamir
+85;DEBIT;20250327000000[-3:BRT];-41.0;Transferência enviada pelo Pix - Henrique Braga Alves Pereira - •••.402.816-•• - NU PAGAMENTOS - IP (0260) Agência: 1 Conta: 34124229-8
+86;CREDIT;20250327000000[-3:BRT];50.0;Transferência recebida pelo Pix - CENTRO ODONTOLOGICO DRA. PATRICIA GARCIA LTDA - 11.745.626/0001-43 - ITAÚ UNIBANCO S.A. (0341) Agência: 7677 Conta: 98212-1
+87;DEBIT;20250327000000[-3:BRT];-4.0;Transferência enviada pelo Pix - Henrique Braga Alves Pereira - •••.402.816-•• - NU PAGAMENTOS - IP (0260) Agência: 1 Conta: 34124229-8
+88;DEBIT;20250328000000[-3:BRT];-26.0;Transferência enviada pelo Pix - Henrique Braga Alves Pereira - •••.402.816-•• - NU PAGAMENTOS - IP (0260) Agência: 1 Conta: 34124229-8
+89;DEBIT;20250328000000[-3:BRT];-7.0;Compra no débito - Fragoso e Ferreira la
+90;CREDIT;20250329000000[-3:BRT];80.0;Transferência recebida pelo Pix - CENTRO ODONTOLOGICO DRA. PATRICIA GARCIA LTDA - 11.745.626/0001-43 - ITAÚ UNIBANCO S.A. (0341) Agência: 7677 Conta: 98212-1
+91;DEBIT;20250329000000[-3:BRT];-52.66;Compra no débito - Doce Mania
+92;DEBIT;20250329000000[-3:BRT];-6.98;Compra no débito - Loja de Conveniencia D
+93;DEBIT;20250330000000[-3:BRT];-10.92;Compra no débito - Uber Uber *Trip Help.U
+94;DEBIT;20250330000000[-3:BRT];-11.96;Compra no débito - Uber Uber *Trip Help.U
+95;CREDIT;20250330000000[-3:BRT];10.92;Crédito em conta
+96;CREDIT;20250330000000[-3:BRT];40.0;Transferência Recebida - Izabella De Paula Braga - •••.911.786-•• - NU PAGAMENTOS - IP (0260) Agência: 1 Conta: 46484189-0
+97;DEBIT;20250330000000[-3:BRT];-8.95;Compra no débito - Uber Uber *Trip Help.U
+98;DEBIT;20250330000000[-3:BRT];-46.29;Compra no débito - Texas 54
+99;CREDIT;20250331000000[-3:BRT];80.0;Transferência recebida pelo Pix - Nazira Restaurante Ltda - 52.127.309/0001-40 - COOP SICREDI PLANALTO RS/MG Agência: 333 Conta: 55858-8
+100;DEBIT;20250331000000[-3:BRT];-50.0;Aplicação RDB
+101;DEBIT;20250331000000[-3:BRT];-8.0;Compra no débito - Fragoso e Ferreira la

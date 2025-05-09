@@ -49,10 +49,12 @@ else:
     print(response.text)'''
 import json
 import requests
+import re
 from ConversaoJsonDados import converter_ofx_para_csv
 
+#Nova chave API: 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
 # Substitua pela sua chave da OpenRouter
-API_KEY = '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'
+API_KEY = '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'
 API_URL = 'https://openrouter.ai/api/v1/chat/completions'
 
 # Converte OFX e obtém os dados
@@ -70,11 +72,13 @@ data = {
                 "- Categorias: Alimentação, Materiais para revenda, Materiais para uso interno, Transporte e logística, Folha de pagamento, Gastos médicos, Outros.\n"
                 "- Processamento requerido: Classificar, pesquisar segmento, calcular totais, identificar não classificáveis.\n"
                 "- Resposta esperada: Categoria, Segmento do fornecedor, Valor original, Total por categoria, Número de transações por segmento.\n\n"
-                f"Os dados são os seguintes (em JSON): {dados_json}"
+                f"Os dados são os seguintes (em JSON): {dados_json}\n"
+                "Por favor, envie a resposta em formato de JSON"
             )
         }
     ]
 }
+
 
 # Enviando para a API
 headers = {
@@ -87,8 +91,11 @@ response = requests.post(API_URL, json=data, headers=headers)
 # Tratando resposta
 if response.status_code == 200:
     conteudo_resposta = response.json()['choices'][0]['message']['content']
+    padrao = r'json(.*)'
+    resultado = re.search(padrao, conteudo_resposta, re.DOTALL)
+    dicionario_python = json.loads(resultado.group(1))
     print("Conteúdo da resposta:")
-    print(conteudo_resposta)
+    print(type(dicionario_python))
 
     with open("resposta_deepseek.txt", "w", encoding="utf-8") as arquivo:
         arquivo.write(conteudo_resposta)

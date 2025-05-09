@@ -21,7 +21,7 @@ def converter_ofx_para_csv(caminho_ofx, caminho_csv='saida_ofx.csv'):
         trnamt = extract('TRNAMT', transaction)
         descricao_transacao = extract('MEMO', transaction)
 
-        valor = None
+        valor = None 
         if trnamt:
             trnamt_clean = re.sub(r'</.*?>', '', trnamt)
             try:

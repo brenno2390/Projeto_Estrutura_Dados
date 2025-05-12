@@ -1,25 +1,4 @@
-Para realizar a análise e categorização automática dos registros financeiros fornecidos, vamos seguir as diretrizes fornecidas. Vamos classificar cada transação em uma das categorias disponíveis, identificar o segmento do fornecedor, calcular os totais por categoria e por segmento, e identificar transações que não possam ser classificadas.
 
-### Categorias Disponíveis:
-- Alimentação
-- Materiais para revenda
-- Materiais para uso interno
-- Transporte e logística
-- Folha de pagamento
-- Gastos médicos
-- Outros
-
-### Estrutura de Resposta:
-Para cada transação, vamos fornecer:
-- Categoria atribuída
-- Segmento do fornecedor
-- Valor original
-
-E, ao final, vamos calcular os totais por categoria.
-
-### Análise dos Registros Financeiros:
-
-```json
 {
   "transacoes": [
     {

@@ -1,60 +1,15 @@
 #api = sk-4ab57004c4ae4158bf2eb19502d5d5f1
 #api2= sk-f124f4d39aa74fe9b4891a42059ebae0
 #api_openRuther = "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"
-'''import requests
-import pandas as pd
-import re
-import json
-import ConversaoJsonDados
 
-
-# Substitua pela sua chave de API do OpenRouter
-API_KEY = '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'
-API_URL = 'https://openrouter.ai/api/v1/chat/completions'
-
-# Defina os cabeçalhos para a requisição da API
-headers = {
-    'Authorization': f'Bearer {API_KEY}',
-    'Content-Type': 'application/json'
-}
-dados_json = json.dumps(ConversaoJsonDados.converter_ofx_para_csv('Extrato.ofx'), ensure_ascii=False)
-# Defina o payload da requisição (dados)
-data = {
-    "model": "deepseek/deepseek-chat:free",
-    "messages": [{"role": "user", "content": f"Gostaria de solicitar a análise e categorização automática dos seguintes registros financeiros, conforme as diretrizes : Objetivo: Classificar cada transação em categorias específicas e identificar o segmento de atuação de cada fornecedor.; Categorias solicitadas: Alimentação (compras de alimentos), Materiais para revenda, Materiais para uso interno, Transporte e logística, Folha de pagamento, Gastos, médicos, Outros (itens não classificáveis nas anteriores); Processamento requerido: Classificar cada transação na categoria mais adequada, Pesquisar e identificar o segmento principal de cada fornecedor, Calcular totais por categoria, Identificar transações não classificáveis; Categoria atribuída: Segmento do fornecedor, Valor original, Total gasto por categoria, Número de transações por segmento; Enviar a resposta em formato de texto, com os totais por categoria descriminando cada uma com todos os fornecedores.Os Dados são os seguintes(em Json): {dados_json}"}]  # Mensagem inicial para a API,
-}
-
-# Envie a requisição POST para a API DeepSeek
-response = requests.post(API_URL, json=data, headers=headers)
-
-# 2. Verifique se a requisição foi bem-sucedida
-if response.status_code == 200:
-    # 3. Extraia o conteúdo da resposta
-    resposta_completa = response.json()  # Isso contém toda a resposta da API
-    
-    # 4. Acesse especificamente o conteúdo da mensagem
-    conteudo_resposta = resposta_completa['choices'][0]['message']['content']
-    
-    # Agora você tem o conteúdo em uma variável
-    print("Conteúdo da resposta:")
-    print(conteudo_resposta)
-    
-    # 5. (Opcional) Salve em um arquivo
-    with open("resposta_deepseek.txt", "w", encoding="utf-8") as arquivo:
-        arquivo.write(conteudo_resposta)
-        
-    print("Resposta salva em 'resposta_deepseek.txt'")
-else:
-    print(f"Erro na requisição: {response.status_code}")
-    print(response.text)'''
 import json
 import requests
 import re
 from ConversaoJsonDados import converter_ofx_para_csv
 
-#Nova chave API: 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
+#Nova chave API: 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
 # Substitua pela sua chave da OpenRouter
-API_KEY = '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'
+API_KEY = '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'
 API_URL = 'https://openrouter.ai/api/v1/chat/completions'
 
 # Converte OFX e obtém os dados
@@ -67,13 +22,30 @@ data = {
         {
             "role": "user",
             "content": (
-                "Gostaria de solicitar a análise e categorização automática dos seguintes registros financeiros, conforme as diretrizes:\n"
-                "- Objetivo: Classificar cada transação em categorias específicas e identificar o segmento de atuação de cada fornecedor.\n"
-                "- Categorias: Alimentação, Materiais para revenda, Materiais para uso interno, Transporte e logística, Folha de pagamento, Gastos médicos, Outros.\n"
-                "- Processamento requerido: Classificar, pesquisar segmento, calcular totais, identificar não classificáveis.\n"
-                "- Resposta esperada: Categoria, Segmento do fornecedor, Valor original, Total por categoria, Número de transações por segmento.\n\n"
-                f"Os dados são os seguintes (em JSON): {dados_json}\n"
-                "Por favor, envie a resposta em formato de JSON"
+                    "Analise e categorize automaticamente os seguintes registros financeiros, com base nas diretrizes a seguir:\n\n"
+                    "**Objetivos:**\n"
+                    "- Classificar cada transação em uma das categorias fornecidas.\n"
+                    "- Identificar o segmento de atuação de cada fornecedor.\n"
+                    "- Calcular totais por categoria e por segmento.\n"
+                    "- Identificar transações que não possam ser classificadas.\n\n"
+                    "**Categorias disponíveis:**\n"
+                    "- Alimentação\n"
+                    "- Materiais para revenda\n"
+                    "- Materiais para uso interno\n"
+                    "- Transporte e logística\n"
+                    "- Folha de pagamento\n"
+                    "- Gastos médicos\n"
+                    "- Outros\n\n"
+                    "**Formato de resposta esperado (em JSON):**\n"
+                    "Para cada transação:\n"
+                    "- Categoria atribuída\n"
+                    "- Segmento do fornecedor (ex: alimentação, logística, saúde, etc.)\n"
+                    "- Valor original\n\n"
+                    "Totais:\n"
+                    "- Total por categoria\n\n"
+
+                    f"Dados de entrada (em formato JSON):{dados_json}"
+                    "Por favor, envie toda a resposta em JSON estruturado, pronto para análise automatizada."
             )
         }
     ]
@@ -93,12 +65,17 @@ if response.status_code == 200:
     conteudo_resposta = response.json()['choices'][0]['message']['content']
     padrao = r'json(.*)'
     resultado = re.search(padrao, conteudo_resposta, re.DOTALL)
-    dicionario_python = json.loads(resultado.group(1))
+    #dicionario_python = json.loads(resultado.group(1))
     print("Conteúdo da resposta:")
-    print(type(dicionario_python))
+    print(conteudo_resposta)
+
+    # Salvando resposta em arquivo
 
     with open("resposta_deepseek.txt", "w", encoding="utf-8") as arquivo:
         arquivo.write(conteudo_resposta)
+    with open("resposta_regex.txt", "w", encoding="utf-8") as arquivo:
+        arquivo.write(resultado.group(1))
+            
     print("Resposta salva em 'resposta_deepseek.txt'")
 else:
     print(f"Erro na requisição: {response.status_code}")

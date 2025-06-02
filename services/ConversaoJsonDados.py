@@ -1,7 +1,7 @@
 import re
 import pandas as pd
 
-def converter_ofx_para_csv(caminho_ofx, caminho_csv='saida_ofx.csv'):
+def converter_ofx_para_csv(caminho_ofx, caminho_csv='ExtratoConvertido.csv'):
     try:
         with open(caminho_ofx, 'r', encoding='utf-8') as file:
             ofx_data = file.read()

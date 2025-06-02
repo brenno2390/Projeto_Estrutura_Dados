@@ -3,13 +3,14 @@
 #api_openRuther = "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"
 
 import json
-import requests
 import re
-from utils.ConversaoJsonDados import converter_ofx_para_csv
+import requests
+import pandas as pd
+from ConversaoJsonDados import converter_ofx_para_csv
 
 #Nova chave API: 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
 # Substitua pela sua chave da OpenRouter
-API_KEY = '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'
+API_KEY = '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'
 API_URL = 'https://openrouter.ai/api/v1/chat/completions'
 
 # Converte OFX e obtém os dados
@@ -52,12 +53,12 @@ data = {
 }
 
 
+# Enviando para a API
 headers = {
     'Authorization': f'Bearer {API_KEY}',
     'Content-Type': 'application/json'
 }
 
-# Enviando para a API
 response = requests.post(API_URL, json=data, headers=headers)
 
 # Tratando resposta

@@ -56,16 +56,10 @@ class DeepSeek:
         if response.status_code == 200:
             try:
                 conteudo_resposta = response.json()['choices'][0]['message']['content']
-                with open("resposta_deepseek.txt", "w", encoding="utf-8") as f:
-                    f.write(conteudo_resposta)
-
                 resultado = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", conteudo_resposta, re.DOTALL | re.IGNORECASE)
 
                 if resultado:
                     json_str = resultado.group(1)
-                    with open("resposta_regex.txt", "w", encoding="utf-8") as f:
-                        f.write(json_str)
-
                     dados = json.loads(json_str)
 
                     # Pegando as transações (com fallback seguro)

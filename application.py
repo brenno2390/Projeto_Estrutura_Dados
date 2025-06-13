@@ -4,7 +4,7 @@ from controller.deepseek import DeepSeek
 class Application:
     def __init__(self):
         self.interface = InterfaceGrafica(self.ao_receber_arquivo)
-        self.deepseek = DeepSeek(api_key="CHAVE APIIIIIIIIIIIIIIIIII") # CHAVE APIIIIIIIIIIIIIIIIIIIIII
+        self.deepseek = DeepSeek(api_key="CHAVE APIIIIIIIIIIIIIIIIIIIIII") # CHAVE APIIIIIIIIIIIIIIIIIIIIII
 
     def ao_receber_arquivo(self, nome_arquivo):
         print(f"[INFO] Arquivo recebido: {nome_arquivo}")

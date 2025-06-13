@@ -3,6 +3,7 @@ import json
 import requests
 import re
 from services.ConversaoJsonDados import converter_ofx_para_csv
+from datetime import datetime
 
 class DeepSeek:
     def __init__(self, api_key):
@@ -10,38 +11,37 @@ class DeepSeek:
         self.api_url = 'https://openrouter.ai/api/v1/chat/completions'
 
     def processar(self, extrato_ofx):
+        # 1. Converte o OFX para JSON
         dados_json = json.dumps(converter_ofx_para_csv(extrato_ofx), ensure_ascii=False)
 
+        # 2. Monta o payload para o modelo
         payload = {
             "model": "deepseek/deepseek-chat:free",
             "messages": [{
                 "role": "user",
                 "content": (
-                    "Analise e categorize automaticamente os seguintes registros financeiros, com base nas diretrizes a seguir:\n\n"
+                    "Analise e categorize automaticamente os seguintes registros financeiros:\n\n"
                     "**Objetivos:**\n"
-                    "- Classificar cada transação em uma das categorias fornecidas.\n"
-                    "- Identificar o segmento de atuação de cada fornecedor.\n"
+                    "- Separar as transações de débito e crédito.\n"
+                    "- Categorizar transações de débito com base nas categorias abaixo.\n"
+                    "- Identificar segmento do fornecedor.\n"
                     "- Calcular totais por categoria e por segmento.\n"
-                    "- Identificar transações que não possam ser classificadas.\n\n"
-                    "**Categorias disponíveis:**\n"
-                    "- Alimentação\n"
-                    "- Materiais para revenda\n"
-                    "- Materiais para uso interno\n"
-                    "- Transporte e logística\n"
-                    "- Folha de pagamento\n"
-                    "- Gastos médicos\n"
-                    "- Outros\n\n"
-                    "**Formato de resposta esperado (em JSON):**\n"
-                    "Para cada transação:\n"
-                    "- Categoria atribuída\n"
-                    "- Segmento do fornecedor (ex: alimentação, logística, saúde, etc.)\n"
-                    "- Valor original\n\n"
-                    "Totais:\n"
-                    "- Total por categoria\n\n"
-
-                    f"Dados de entrada (em formato JSON):{dados_json}"
-                    "Por favor, envie toda a resposta em JSON estruturado entre ``` , pronto para análise automatizada."
-            )
+                    "- Marcar como 'Não Classificado' quando necessário.\n\n"
+                    "**Categorias disponíveis para débito:**\n"
+                    "- Tarifas e Taxas Bancárias\n- Cartão de Crédito\n- Entretenimento\n- Manutenção Predial\n"
+                    "- Alimentação\n- Aluguel\n- Telefone e Internet\n- IPTU\n- Água\n- Energia Elétrica\n"
+                    "- Materiais para Revenda\n- Materiais para Uso Interno\n- Transporte e Logística\n"
+                    "- Folha de Pagamento\n- Gastos Médicos\n- Licenças e Softwares\n- Publicidade e Marketing\n"
+                    "- Tributos e Impostos\n- Equipamentos e Investimentos\n- Empréstimos e Juros\n"
+                    "- Distribuição de Lucros / Pró-Labore\n- Outros\n- Não Classificado\n\n"
+                    "**Formato de resposta esperado (em JSON entre crases):**\n"
+                    "- 'transações de debito': lista de objetos com 'fornecedor', 'categoria', 'valor'\n"
+                    "- 'transações de credito': idem\n"
+                    "- 'totais por categoria': objeto {categoria: total}\n"
+                    "- 'totais por segmento': objeto {segmento: total}\n\n"
+                    f"Dados de entrada (em JSON):\n{dados_json}\n\n"
+                    "Envie a resposta em JSON dentro de três crases (```), para análise automatizada."
+                )
             }]
         }
 
@@ -50,41 +50,59 @@ class DeepSeek:
             'Content-Type': 'application/json'
         }
 
+        # 3. Faz a requisição
         response = requests.post(self.api_url, json=payload, headers=headers)
 
         if response.status_code == 200:
+            try:
+                conteudo_resposta = response.json()['choices'][0]['message']['content']
+                with open("resposta_deepseek.txt", "w", encoding="utf-8") as f:
+                    f.write(conteudo_resposta)
 
-            conteudo_resposta = response.json()['choices'][0]['message']['content']
-            resultado = re.search(r"```(?:json)?\s*(\{.*?\}|\[.*?\])\s*```", conteudo_resposta, re.DOTALL | re.IGNORECASE)
+                resultado = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", conteudo_resposta, re.DOTALL | re.IGNORECASE)
 
-            with open("resposta_deepseek.txt", "w", encoding="utf-8") as arquivo:
-                arquivo.write(conteudo_resposta)
-            with open("resposta_regex.txt", "w", encoding="utf-8") as arquivo:
-                arquivo.write(resultado.group(1))
+                if resultado:
+                    json_str = resultado.group(1)
+                    with open("resposta_regex.txt", "w", encoding="utf-8") as f:
+                        f.write(json_str)
 
-            if resultado:
-                json_str = resultado.group(1)
-                try:
-                    # 3. Converter para dicionário Python
                     dados = json.loads(json_str)
-                    df_transacoes = pd.DataFrame(dados['transacoes'])
 
+                    # Pegando as transações (com fallback seguro)
+                    transacoes_debito = dados.get('transações de debito', [])
+                    transacoes_credito = dados.get('transações de credito', [])
+
+                    df_transacoes = pd.DataFrame(transacoes_debito + transacoes_credito)
+
+                    # Totais por categoria
+                    totais_categoria = dados.get('totais por categoria', {})
                     df_totais = pd.DataFrame(
-                        list(dados['totais_por_categoria'].items()),
+                        list(totais_categoria.items()),
                         columns=['Categoria', 'Total']
                     )
 
-                    with pd.ExcelWriter("teste.xlsx", engine='xlsxwriter') as writer:
+                    # Totais por segmento
+                    totais_segmento = dados.get('totais por segmento', {})
+                    df_segmento = pd.DataFrame(
+                        list(totais_segmento.items()),
+                        columns=['Segmento', 'Total']
+                    )
+
+                    # Nome do arquivo com timestamp
+                    nome_arquivo = "teste.xlsx"
+                    with pd.ExcelWriter(nome_arquivo, engine='xlsxwriter') as writer:
                         df_transacoes.to_excel(writer, sheet_name='Transações', index=False)
                         df_totais.to_excel(writer, sheet_name='Totais por Categoria', index=False)
+                        df_segmento.to_excel(writer, sheet_name='Totais por Segmento', index=False)
 
-                    print(f"Arquivo Excel criado em: 'teste.xlsx'")
+                    print(f" Arquivo Excel criado com sucesso: {nome_arquivo}")
+                else:
+                    print(" JSON estruturado não encontrado na resposta.")
+                    print(" Conteúdo da resposta completa:")
+                    print(conteudo_resposta)
 
-                except json.JSONDecodeError as e:
-                    print("Erro ao decodificar JSON:", e)
-                    dados = None
-
-            print("Resposta salva.")
+            except Exception as e:
+                print(f"Erro no processamento da resposta: {e}")
         else:
             print(f"Erro na requisição: {response.status_code}")
             print(response.text)
